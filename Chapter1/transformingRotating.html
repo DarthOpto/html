@@ -1,0 +1,44 @@
+<!<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <title>Sample HTML5 File</title>
+        <script type="text/javascript">
+            // This function will be called once the page loads completely
+            function pageloaded(){
+                // Get a handle to the canvas object
+                var canvas = document.getElementById("testcanvas");
+
+                // Get the 2d context for this canvas
+                var context = canvas.getContext("2d");
+
+                // DRAWING IMAGES
+                var image = document.getElementById("spaceship");
+
+                // Translate origin to location of object
+                context.translate(250, 370);
+                // Rotate about the new origin by 60 degrees
+                context.rotate(Math.PI / 3);
+                context.drawImage(image, 0, 0, 60, 50, -30, -25, 60, 50);
+                // Restore to original state by rotating and translating back
+                context.rotate(-Math.PI / 3)
+                context.translate(-240, -370);
+                // Translate origin to location of the object
+                context.translate(300, 370);
+                // Rotate about new origin
+                context.rotate(3 * Math.PI / 4);
+                context.drawImage(image, 0, 0, 60, 50, -30, -25, 60, 50);
+                // Restore image to original state by rotating and translating back
+                context.rotate(-3 * Math.PI / 4);
+                context.translate(-300, -370);
+
+            };
+        </script>
+    </head>
+    <body onload="pageloaded();">
+        <canvas width="640" height="480" id="testcanvas" style="border: 1px solid black;">
+            Your browser does not support HTML5 Canvas. Please shift to a newer browser.
+        </canvas>
+        <img src="spaceship.png" id="spaceship">
+    </body>
+</html>
