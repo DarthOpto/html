@@ -1,0 +1,21 @@
+<!<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <title>Dynamically load audio file</title>
+        <script type="text/javascript">
+            // Create a new Audio object
+            var sound = new Audio();
+            // Select the source
+            sound.src = "Superboy.mp3";
+            // Play the sound
+            sound.play();
+
+        </script>
+    </head>
+    <body onload="pageloaded();">
+        <canvas width="640" height="480" id="testcanvas" style="border: 1px solid black;">
+            Your browser does not support HTML5 Canvas. Please shift to a newer browser.
+        </canvas>
+    </body>
+</html>

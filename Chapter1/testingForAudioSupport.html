@@ -1,0 +1,35 @@
+<!<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <title>Testing for Audio Support</title>
+        <script type="text/javascript">
+            var audio = document.createElement("audio");
+            var mp3Support, oggSupport;
+            if (audio.canPlayType) {
+                // Currently canPlayType() returns: "", "maybe", or "probably"
+                mp3Support = "" !== audio.canPlayType("audio/mpeg");
+                oggSupport = "" !== audio.canPlayType("audio/ogg; codecs=\"vorbis\"");
+            } else {
+                mp3Support = false;
+                oggSupport = false;
+            }
+
+            // Check for ogg, then mp3, and finally set soundFileExtn to undefined
+            var soundFileExtn = mp3Support ? ".mp3" : oggSupport ? ".ogg" : undefined;
+            if (soundFileExtn) {
+                var sound = new Audio();
+                sound.src = "Superboy" + soundFileExtn;
+                sound.play();
+            }
+
+            
+        </script>
+
+    </head>
+    <body onload="pageloaded();">
+        <canvas width="640" height="480" id="testcanvas" style="border: 1px solid black;">
+            Your browser does not support HTML5 Canvas. Please shift to a newer browser.
+        </canvas>
+    </body>
+</html>
